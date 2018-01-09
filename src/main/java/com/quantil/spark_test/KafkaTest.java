@@ -43,10 +43,10 @@ public class KafkaTest {
     kafkaParams.put("heartbeat.interval.ms", "55000");
     kafkaParams.put("request.timeout.ms", "65000");
     kafkaParams.put("session.timeout.ms", "60000");
-    kafkaParams.put("enable.auto.commit", false);// 这个意思是不记录offset，所以重启后，会从上次有记录的地方重新开始消费,而忽略auto.offset.reset
+    kafkaParams.put("enable.auto.commit", true);
     kafkaParams.put("receive.buffer.bytes", 655350000);
     
-    /* enable.auto.commit为false，不记录offest，忽略auto.offset.reset参数，每次都从上次残留的offset记录
+    /* enable.auto.commit为false，不记录offest,earliest为从earliest开始
      * enable.auto.commit为true，则记录offset，如果为earliest，则从上次残留的offset记录
      * enable.auto.commit为false，为latest，则从latest开始
      * 
